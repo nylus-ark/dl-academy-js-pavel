@@ -610,8 +610,11 @@ signInForm?.addEventListener('submit', (evt) => {
 
 // Логика отрисовки информации о пользователе на странице профиля
 
+const locationPathName = location.pathname;
+const lastLocationPathName = locationPathName.split('/').pop();
+
 // Временное ограничение для работы кода только на странице профиля
-if (location.pathname === '/profile.html') {
+if (lastLocationPathName === 'profile.html') {
     let currentProfileData = {};
 
     toggleLoader(loader);
@@ -949,10 +952,10 @@ fileInputs?.forEach((input) => {
     });
 });
 
-// Полноценная логика работы фильтра постов и его несброс при перезагрузке страницы
+// Полноценная логика работы фильтра постов и его несброс при перезагрузке страниц
 
 // Временное ограничение для работы кода только на странице блога
-if (location.pathname === '/blog.html') {
+if (lastLocationPathName === 'blog.html') {
     (function () {
         // Получение search параметров из location
         function getParamsFromLocation() {
